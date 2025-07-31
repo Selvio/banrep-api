@@ -1,6 +1,8 @@
+/* eslint-disable import/order */
 import { NextResponse } from "next/server";
 
 import { badRequest, badGateway } from "@/lib/api/errors";
+
 import { fetchFlow } from "@/lib/banrep/fetchFlow";
 import { FlowId } from "@/lib/banrep/flows";
 import {
@@ -10,9 +12,10 @@ import {
 
 export async function GET(
   _req: Request,
-  { params }: { params: { flow: string } }
+  { params }: { params: Promise<{ flow: string }> }
 ) {
-  const parseFlow = FlowParamSchema.safeParse(params.flow);
+  const { flow } = await params;
+  const parseFlow = FlowParamSchema.safeParse(flow);
   if (!parseFlow.success) {
     return badRequest(parseFlow.error.message);
   }
