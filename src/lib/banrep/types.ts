@@ -5,7 +5,7 @@ export interface Observation {
 
 export interface SDMXResponse {
   "message:GenericData": {
-    "data:DataSet": {
+    "message:DataSet": {
       "generic:Series": {
         "generic:Obs": Array<{
           "generic:ObsDimension": { $: { value: string } };
