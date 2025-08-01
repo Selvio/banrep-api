@@ -42,7 +42,7 @@ export async function fetchFlow(
 
   const series = dataSet[0]?.["generic:Series"];
   if (!series) {
-    console.log("Available keys in dataSet:", Object.keys(dataSet));
+    // console.log("Available keys in dataSet:", Object.keys(dataSet));
     throw new Error("Invalid response structure: missing Series");
   }
 
