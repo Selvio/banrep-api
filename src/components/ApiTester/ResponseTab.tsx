@@ -1,5 +1,4 @@
 import { useApiContext } from "./context/ApiContext";
-import { DataTable } from "./DataTable";
 import { ResponseViewer } from "./ResponseViewer";
 
 export function ResponseTab() {
@@ -59,7 +58,6 @@ export function ResponseTab() {
   return (
     <div className="space-y-4">
       <ResponseViewer response={response} />
-      {response.data.length > 0 && <DataTable data={response.data} />}
     </div>
   );
-} 
+}

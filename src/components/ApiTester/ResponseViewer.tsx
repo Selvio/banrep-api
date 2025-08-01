@@ -28,11 +28,11 @@ export function ResponseViewer({ response }: ResponseViewerProps) {
           </span>
         </div>
         <div className="p-4">
-          <pre className="text-sm text-gray-900 dark:text-white overflow-x-auto">
+          <pre className="text-sm text-gray-900 dark:text-white overflow-x-auto max-h-[42vh] overflow-y-auto">
             <code>{JSON.stringify(response.data, null, 2)}</code>
           </pre>
         </div>
       </div>
     </div>
   );
-} 
+}

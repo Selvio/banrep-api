@@ -1,4 +1,3 @@
-import { ApiDocumentation } from "./ApiDocumentation";
 import { useApiContext } from "./context/ApiContext";
 import { EndpointHeader } from "./EndpointHeader";
 import { FlowSelector } from "./FlowSelector";
@@ -36,7 +35,6 @@ export function ApiTester() {
           {/* Sidebar */}
           <div className="w-80 flex-shrink-0">
             <FlowSelector />
-            <ApiDocumentation />
           </div>
 
           {/* Main Content */}
