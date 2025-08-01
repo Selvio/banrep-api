@@ -11,7 +11,7 @@ import {
 } from "@/lib/banrep/schemas";
 
 export async function GET(
-  _req: Request,
+  req: Request,
   { params }: { params: Promise<{ flow: string }> }
 ) {
   const { flow } = await params;
@@ -21,8 +21,12 @@ export async function GET(
   }
   const flowId = parseFlow.data as FlowId;
 
+  // Get startPeriod from query params
+  const { searchParams } = new URL(req.url);
+  const startPeriod = searchParams.get("startPeriod") || "2020";
+
   try {
-    const rawData = await fetchFlow(flowId);
+    const rawData = await fetchFlow(flowId, startPeriod);
 
     const parseObs = ObservationsResponseSchema.safeParse(rawData);
     if (!parseObs.success) {

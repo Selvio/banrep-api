@@ -3,15 +3,29 @@ export interface Observation {
   value: number;
 }
 
+interface ObsDimension {
+  $: { value: string };
+}
+
+interface ObsValue {
+  $: { value: string };
+}
+
+interface XMLObservation {
+  "generic:ObsDimension": ObsDimension[];
+  "generic:ObsValue": ObsValue[];
+}
+
+interface Series {
+  "generic:Obs": XMLObservation[];
+}
+
+interface DataSetItem {
+  "generic:Series": Series[];
+}
+
 export interface SDMXResponse {
   "message:GenericData": {
-    "message:DataSet": {
-      "generic:Series": {
-        "generic:Obs": Array<{
-          "generic:ObsDimension": { $: { value: string } };
-          "generic:ObsValue": { $: { value: string } };
-        }>;
-      };
-    };
+    "message:DataSet": DataSetItem[];
   };
 }

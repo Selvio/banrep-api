@@ -7,7 +7,9 @@ export const FlowParamSchema = z.enum(ALLOWED_FLOWS);
 export const ObservationSchema = z.object({
   date: z
     .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/, { message: "Invalid date format" }),
+    .regex(/^\d{4}-\d{2}(-\d{2})?$/, {
+      message: "Invalid date format. Expected YYYY-MM or YYYY-MM-DD",
+    }),
   value: z.number().finite(),
 });
 
